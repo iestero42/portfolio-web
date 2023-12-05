@@ -10,7 +10,6 @@ const rootElement = document.getElementById('root');
 if (rootElement !== null) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
-
     <React.StrictMode>
       <Router>
         <App />
