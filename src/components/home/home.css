@@ -1,0 +1,123 @@
+/* --------- */
+/* Home section */
+/* --------- */
+.wave {
+  animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.1s; /* Change to speed up or slow down */
+  animation-iteration-count: infinite; /* Never stop waving :) */
+  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  } /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  } /* Reset for the last half to pause */
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.home-header {
+  padding-top: 80px !important;
+  padding-right: 100px;
+  margin-right: 10rem;
+  width: 55rem;
+}
+
+.home-section {
+	position: relative !important;
+	padding-top: 150px !important;
+	padding-bottom: 30px !important;
+  color: whitesmoke;
+  text-align: left;
+}
+
+.box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 30px 30px 30px !important;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: var(--color-30);
+  -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--color-30),
+  0px 0px 0.5em 0px var(--color-30);
+  -moz-box-shadow: inset 0px 0px 0.5em 0px var(--color-30),
+  0px 0px 0.5em 0px var(--color-30);
+  box-shadow: 0px 0px 3em 0px var(--color-30);
+}
+
+.box::before {
+  content: ' ';
+  position: absolute;
+  width: 150px;
+  height: 1400%;
+  background: linear-gradient(to bottom right, var(--color-30), var(--color-10));
+  animation: animate 4s linear infinite;
+}
+
+.box::after {
+  content: ' ';
+  position: absolute;
+  inset: 4px;
+  box-shadow: inset 0px 0px 2em 0px var(--color-60);
+  background: linear-gradient(to top left, var(--color-60), var(--color-30));
+  border-radius: 20px;
+}
+
+@keyframes animate {
+  0% 
+  {
+    transform: rotate(0deg);
+  }
+  100%
+  {
+    transform: rotate(360deg);
+  }
+}
+
+.description-col {
+  margin-top: 100px !important;
+  opacity: 0.9;
+
+}
+
+.description {
+  font-size: 1.4em;
+  font-weight: 400;
+  z-index: 10;
+}
+
+.heading {
+  font-size: 2.4em !important;
+  padding-left: 50px !important;
+}
+
+.heading-name {
+  font-size: 2.5em !important;
+  padding-left: 45px !important;
+}
+
+.main-name {
+  color: var(--color-10);
+}
