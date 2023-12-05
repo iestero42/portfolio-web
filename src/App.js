@@ -1,8 +1,10 @@
 import React, { useState, useEffect} from "react";
 import {
+  Navigate,
   Route,
   Routes,
-  useLocation
+  useLocation,
+  useNavigate
 } from "react-router-dom";
 import { useGlitch } from 'react-powerglitch';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -69,8 +71,11 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  const navigate = useNavigate();
+  navigate('/Portfolio_Web/');
   return (
     <>
+      <BootAnimation />
       <Preloader load={load} />
       <div className="backscreen">
         <MatrixRainingCode className="matrixRaining" />
