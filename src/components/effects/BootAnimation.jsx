@@ -72,7 +72,7 @@ const BootAnimation = () => {
 		if (showWelcome && !isFinished) {
 		  const timer = setTimeout(() => {
 			setAnimationClass('fade-out');
-		  }, 2000);
+		  }, 1000);
 	
 		  return () => clearTimeout(timer);
 		}
