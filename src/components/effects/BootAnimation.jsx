@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const BootAnimation = () => {
-	const navigate = useNavigate();	
     const [displayText, setDisplayText] = useState('');
 	const [isFinished, setIsFinished] = useState(false);
 	const [animationClass, setAnimationClass] = useState('');
@@ -58,22 +56,9 @@ const BootAnimation = () => {
                     setTimeout(() => setShowWelcome(true), 1000); // Mostrar mensaje de bienvenida
                 }
             }
-        } else {
-			setTimeout(() => setAnimationClass('fade-out'), 2000);
-		}
-    } 
+        }
+    }
 
-	useEffect(() => {
-		if (animationClass === 'fade-out' && !isFinished) {
-		  const timer = setTimeout(() => {
-			document.body.style.overflow = 'auto';
-			setIsFinished(true);
-			navigate('/Portfolio_Web/');
-		  }, 1000); 
-	  
-		  return () => clearTimeout(timer);
-		}
-	  }, [animationClass, navigate, isFinished]);
 	useEffect(() => {
         if (isPageReloaded()) {
             setIsFinished(true);
@@ -82,6 +67,28 @@ const BootAnimation = () => {
             typeLine();
         }
     }, [setIsFinished]);
+
+	useEffect(() => {
+		if (showWelcome && !isFinished) {
+		  const timer = setTimeout(() => {
+			setAnimationClass('fade-out');
+		  }, 2000);
+	
+		  return () => clearTimeout(timer);
+		}
+	  }, [showWelcome, isFinished]);
+
+	useEffect(() => {
+		if (animationClass === 'fade-out' && !isFinished) {
+		  const timer = setTimeout(() => {
+			document.body.style.overflow = 'auto';
+			setIsFinished(true);
+		  }, 1000); 
+	  
+		  return () => clearTimeout(timer);
+		}
+	  }, [animationClass, isFinished]);
+
 
 	if (isFinished) {
 		document.body.style.overflow = 'auto';
