@@ -39,19 +39,6 @@ const BootAnimation = () => {
 		"SYSTEM READY."
 	];
 
- 
-
-	useEffect(() => {
-		if (animationClass === 'fade-out' && !isFinished) {
-		  const timer = setTimeout(() => {
-			document.body.style.overflow = 'auto';
-			setIsFinished(true);
-			navigate('/Portfolio_Web/');
-		  }, 1000); 
-	  
-		  return () => clearTimeout(timer);
-		}
-	  }, [animationClass, navigate, isFinished]);
 	useEffect(() => {
         if (isPageReloaded()) {
             setIsFinished(true);
@@ -79,10 +66,21 @@ const BootAnimation = () => {
 				} else {
 					setTimeout(() => setAnimationClass('fade-out'), 2000);
 				}
+
+				typeLine();
+				
+				if (animationClass === 'fade-out' && !isFinished) {
+					const timer = setTimeout(() => {
+					  document.body.style.overflow = 'auto';
+					  setIsFinished(true);
+					  navigate('/Portfolio_Web/');
+					}, 1000); 
+				
+					return () => clearTimeout(timer);
+				  }
 			};
-            typeLine();
         }
-    }, [setIsFinished]);
+    }, [setIsFinished, animationClass, navigate]);
 
 	if (isFinished) {
 		document.body.style.overflow = 'auto';
