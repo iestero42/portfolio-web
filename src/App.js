@@ -71,7 +71,6 @@ function App() {
 
   return (
     <>
-      <BootAnimation />
       <Preloader load={load} />
       <div className="backscreen">
         <MatrixRainingCode className="matrixRaining" />
