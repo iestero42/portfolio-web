@@ -70,7 +70,7 @@ const BootAnimation = () => {
 	  
 		  return () => clearTimeout(timer);
 		}
-	  }, [animationClass, navigate, isFinished]);
+	  }, [animationClass, isFinished]);
 	useEffect(() => {
         if (isPageReloaded()) {
             setIsFinished(true);
