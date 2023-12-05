@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const BootAnimation = () => {
+	const navigate = useNavigate();	
     const [displayText, setDisplayText] = useState('');
 	const [isFinished, setIsFinished] = useState(false);
 	const [animationClass, setAnimationClass] = useState('');
@@ -66,11 +68,12 @@ const BootAnimation = () => {
 		  const timer = setTimeout(() => {
 			document.body.style.overflow = 'auto';
 			setIsFinished(true);
+			navigate('/Portfolio_Web/');
 		  }, 1000); 
 	  
 		  return () => clearTimeout(timer);
 		}
-	  }, [animationClass, isFinished]);
+	  }, [animationClass, navigate, isFinished]);
 	useEffect(() => {
         if (isPageReloaded()) {
             setIsFinished(true);
