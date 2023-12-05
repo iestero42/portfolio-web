@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const BootAnimation = () => {
-	const navigate = useNavigate();	
     const [displayText, setDisplayText] = useState('');
 	const [isFinished, setIsFinished] = useState(false);
 	const [animationClass, setAnimationClass] = useState('');
