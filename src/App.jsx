@@ -85,7 +85,7 @@ function App() {
             timeout={300}
             >
               <Routes location={location}>
-                <Route path="/Portfolio_Web/" element={<Home />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/Portfolio_Web/about" element={<About />} />
                 <Route path="/Portfolio_Web/42madrid" element={<Madrid42 />} />
                 <Route path="/Portfolio_Web/contactMe" element={<ContactMe />} />

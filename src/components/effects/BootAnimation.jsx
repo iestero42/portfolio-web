@@ -39,48 +39,49 @@ const BootAnimation = () => {
 		"SYSTEM READY."
 	];
 
+    let currentLine = 0;
+    let currentChar = 0;
+    const typeLine = () => {
+        if (currentLine < lines.length) {
+            let line = lines[currentLine];
+            if (currentChar < line.length) {
+                setDisplayText(prev => prev + line[currentChar]);
+                currentChar++;
+                setTimeout(typeLine, 30); // Ajusta la velocidad de "escritura"
+            } else {
+                setDisplayText(prev => prev + '\n');
+                currentChar = 0;
+                currentLine++;
+                if (currentLine < lines.length) {
+                    setTimeout(typeLine, 50); // Retraso antes de la siguiente línea
+                } else {
+                    setTimeout(() => setShowWelcome(true), 1000); // Mostrar mensaje de bienvenida
+                }
+            }
+        } else {
+			setTimeout(() => setAnimationClass('fade-out'), 2000);
+		}
+    } 
+
+	useEffect(() => {
+		if (animationClass === 'fade-out' && !isFinished) {
+		  const timer = setTimeout(() => {
+			document.body.style.overflow = 'auto';
+			setIsFinished(true);
+			navigate('/Portfolio_Web/');
+		  }, 1000); 
+	  
+		  return () => clearTimeout(timer);
+		}
+	  }, [animationClass, navigate, isFinished]);
 	useEffect(() => {
         if (isPageReloaded()) {
             setIsFinished(true);
         } else {
             document.body.style.overflow = 'hidden';
-			let currentLine = 0;
-			let currentChar = 0;
-			const typeLine = () => {
-				if (currentLine < lines.length) {
-					let line = lines[currentLine];
-					if (currentChar < line.length) {
-						setDisplayText(prev => prev + line[currentChar]);
-						currentChar++;
-						setTimeout(typeLine, 30); // Ajusta la velocidad de "escritura"
-					} else {
-						setDisplayText(prev => prev + '\n');
-						currentChar = 0;
-						currentLine++;
-						if (currentLine < lines.length) {
-							setTimeout(typeLine, 50); // Retraso antes de la siguiente línea
-						} else {
-							setTimeout(() => setShowWelcome(true), 1000); // Mostrar mensaje de bienvenida
-						}
-					}
-				} else {
-					setTimeout(() => setAnimationClass('fade-out'), 2000);
-				}
-
-				typeLine();
-				
-				if (animationClass === 'fade-out' && !isFinished) {
-					const timer = setTimeout(() => {
-					  document.body.style.overflow = 'auto';
-					  setIsFinished(true);
-					  navigate('/Portfolio_Web/');
-					}, 1000); 
-				
-					return () => clearTimeout(timer);
-				  }
-			};
+            typeLine();
         }
-    }, [setIsFinished, animationClass, navigate]);
+    }, [setIsFinished]);
 
 	if (isFinished) {
 		document.body.style.overflow = 'auto';

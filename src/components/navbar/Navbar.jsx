@@ -72,7 +72,7 @@ function NavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto home" defaultActiveKey="#home">
             <Nav.Item>
-              <Nav.Link as={Link} to="/Portfolio_Web/" onClick={() => updateExpanded(false)}>
+              <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
                 <span 
                   ref={glitch.ref}
                 >
