@@ -66,25 +66,25 @@ function Madrid42() {
   const projects_1 = [
     {
       title: "LIBFT",
-      description: "The libft project involves creating a personal C library, \
-                    re-implementing standard C library functions, and adding useful \
-                    additional ones, to deepen understanding of C and enhance coding efficiency.",
+      description: 'The libft project involves creating a personal C library,' +
+                    're-implementing standard C library functions, and adding useful' +
+                    'additional ones, to deepen understanding of C and enhance coding efficiency.',
       imgUrl: libft,
       href_repo: "https://github.com/iestero42/libft"
     },
     {
       title: "GET_NEXT_LINE",
-      description: "The get_next_line project is a coding challenge in C that involves \
-                    writing a function to read and return a line from a file descriptor, \
-                    efficiently handling memory and multiple file reads.",
+      description: 'The get_next_line project is a coding challenge in C that involves' +
+                    'writing a function to read and return a line from a file descriptor,' +
+                    'efficiently handling memory and multiple file reads.',
       imgUrl: get_next_line,
       href_repo: "https://github.com/iestero42/get_next_line.git"
     },
     {
       title: "FT_PRINTF",
-      description: "The ft_printf project involves replicating the C standard library's printf \
-                    function, requiring students to handle various formats and specifiers to output \
-                    formatted data, thereby enhancing their understanding of variadic functions in C.",
+      description: 'The ft_printf project involves replicating the C standard librarys printf' +
+                    'function, requiring students to handle various formats and specifiers to output' +
+                    'formatted data, thereby enhancing their understanding of variadic functions in C.',
       imgUrl: ft_printf,
       href_repo: "https://github.com/iestero42/ft_printf.git"
     },
@@ -93,10 +93,10 @@ function Madrid42() {
   const projects_2 = [
     {
       title: "PUSH_SWAP",
-      description: "The push_swap project is a coding challenge focused on data sorting algorithms. \
-                    It involves creating a program in C that sorts numbers using two stacks, optimizing \
-                    the sorting process with a limited set of operations, thereby sharpening algorithmic \
-                    and efficiency skills.",
+      description: 'The push_swap project is a coding challenge focused on data sorting algorithms.' +
+                    'It involves creating a program in C that sorts numbers using two stacks, optimizing' +
+                    'the sorting process with a limited set of operations, thereby sharpening algorithmic' +
+                    'and efficiency skills.',
       imgUrl: push_swap,
       href_repo: "https://github.com/iestero42/push_swap.git"
     }
