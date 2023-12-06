@@ -65,7 +65,7 @@ function Home() {
             </div>
            </Col>
           </Row>
-          <Row style={{ justifyContent: "center", paddingLeft: "200px", paddingRight: "200px", paddingTop: "100px" }}>
+          <Row style={{ justifyContent: "center", paddingLeft: "200px", paddingRight: "200px"}}>
             <Col md={12} style={{ paddingBottom: 20 }}>
               <div className="description-col">
                 <div className="box">
