@@ -45,15 +45,15 @@ const BootAnimation = () => {
             if (currentChar < line.length) {
                 setDisplayText(prev => prev + line[currentChar]);
                 currentChar++;
-                setTimeout(typeLine, 10); // Ajusta la velocidad de "escritura"
+                setTimeout(typeLine, 5); // Ajusta la velocidad de "escritura"
             } else {
                 setDisplayText(prev => prev + '\n');
                 currentChar = 0;
                 currentLine++;
                 if (currentLine < lines.length) {
-                    setTimeout(typeLine, 10); // Retraso antes de la siguiente línea
+                    setTimeout(typeLine, 5); // Retraso antes de la siguiente línea
                 } else {
-                    setTimeout(() => setShowWelcome(true), 1000); // Mostrar mensaje de bienvenida
+                    setTimeout(() => setShowWelcome(true), 500); // Mostrar mensaje de bienvenida
                 }
             }
         }
@@ -72,7 +72,7 @@ const BootAnimation = () => {
 		if (showWelcome && !isFinished) {
 		  const timer = setTimeout(() => {
 			setAnimationClass('fade-out');
-		  }, 1000);
+		  }, 500);
 	
 		  return () => clearTimeout(timer);
 		}
