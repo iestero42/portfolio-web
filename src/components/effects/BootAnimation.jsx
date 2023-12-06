@@ -37,8 +37,8 @@ const BootAnimation = () => {
 		"SYSTEM READY."
 	];
 
-	const [currentLine, setCurrentLine] = useState(0);
-	const [currentChar, setCurrentChar] = useState(0);
+	const [currentLine, setCurrentLine] = useState('');
+	const [currentChar, setCurrentChar] = useState('');
     const typeLine = () => {
 		if (currentLine < lines.length) {
 		  let line = lines[currentLine];
