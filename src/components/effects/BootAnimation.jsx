@@ -37,27 +37,27 @@ const BootAnimation = () => {
 		"SYSTEM READY."
 	];
 
-    let currentLine = 0;
-    let currentChar = 0;
+	const [currentLine, setCurrentLine] = useState(0);
+	const [currentChar, setCurrentChar] = useState(0);
     const typeLine = () => {
-        if (currentLine < lines.length) {
-            let line = lines[currentLine];
-            if (currentChar < line.length) {
-                setDisplayText(prev => prev + line[currentChar]);
-                currentChar++;
-                setTimeout(typeLine, 30); // Ajusta la velocidad de "escritura"
-            } else {
-                setDisplayText(prev => prev + '\n');
-                currentChar = 0;
-                currentLine++;
-                if (currentLine < lines.length) {
-                    setTimeout(typeLine, 50); // Retraso antes de la siguiente línea
-                } else {
-                    setTimeout(() => setShowWelcome(true), 1000); // Mostrar mensaje de bienvenida
-                }
-            }
-        }
-    }
+		if (currentLine < lines.length) {
+		  let line = lines[currentLine];
+		  if (currentChar < line.length) {
+			setDisplayText(prev => prev + line[currentChar]);
+			setCurrentChar(currentChar + 1);
+			setTimeout(typeLine, 30);
+		  } else {
+			setDisplayText(prev => prev + '\n');
+			setCurrentChar(0);
+			setCurrentLine(currentLine + 1);
+			if (currentLine < lines.length) {
+			  setTimeout(typeLine, 50);
+			} else {
+			  setTimeout(() => setShowWelcome(true), 1000);
+			}
+		  }
+		}
+	  };
 
 	useEffect(() => {
         if (isPageReloaded()) {
