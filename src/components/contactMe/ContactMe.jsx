@@ -80,7 +80,7 @@ function ContactMe() {
           <div style={{display: "flex", justifyContent: "start", alignContent: "start", flexDirection: "column", 	padding: "0px 90px 0px 90px" }}>
             <img src={contactlogo} alt='contactlogo' style={{height: '100%', width: '94%'}} ref={glitch.ref}/>
             <div className="docs" style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <a href='/cv.pdf' type='button' target="_blank" style={{ color: "var(--color-10)", textDecoration: "none"}} rel="noopener noreferrer">
+              <a href='/cv_israel.pdf' type='button' target="_blank" style={{ color: "var(--color-10)", textDecoration: "none"}} rel="noopener noreferrer">
                 <FaFileAlt style={{paddingBottom: "2px"}}/> <span style={{color: "white"}}>CV</span>
               </a>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', textAlign: 'right' }}>
