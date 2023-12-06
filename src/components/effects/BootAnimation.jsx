@@ -49,8 +49,8 @@ const BootAnimation = () => {
 		  } else {
 			setDisplayText(prev => prev + '\n');
 			setCurrentChar(0);
-			setCurrentLine(currentLine + 1);
-			if (currentLine < lines.length) {
+			if (currentLine < lines.length - 1) {
+			  setCurrentLine(currentLine + 1);
 			  setTimeout(typeLine, 50);
 			} else {
 			  setTimeout(() => setShowWelcome(true), 1000);
