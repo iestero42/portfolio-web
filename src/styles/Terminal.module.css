@@ -1,0 +1,46 @@
+.terminal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 80vw;
+    height: 80vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid #0f0;
+    border-radius: 10px;
+    padding: 20px;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    transition: all 1s ease-in-out;
+    opacity: 0;
+  }
+  
+  .terminal.visible {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    z-index: 3;
+  }
+  
+  .tabBar {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .tab {
+    background-color: transparent;
+    border: 1px solid #0f0;
+    color: #0f0;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .activeTab {
+    background-color: #0f0;
+    color: #000;
+  }
+  
+  .content {
+    height: calc(100% - 40px);
+    overflow-y: auto;
+  }
