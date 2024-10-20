@@ -1,9 +1,77 @@
-.circuitCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1;
-    image-rendering: pixelated;
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  min-height: 400px;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom, #0f0f23 10%, #090918 90%);
+}
+
+.wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(transparent 70%, rgba(72, 61, 139, 0.1) 30%);
+  background-size: 3px 3px;
+  z-index: 601;
+  pointer-events: none;
+}
+
+.mGrid {
+  position: absolute;
+  left: 50%;
+  width: 200vw;
+  height: 100vh;
+  margin-left: -100vw;
+  background-image: 
+    linear-gradient(0deg, transparent 24%, rgba(72, 61, 139, 0.3) 25%, rgba(72, 61, 139, 0.5) 26%, transparent 27%, transparent 74%, rgba(72, 61, 139, 0.3) 75%, rgba(72, 61, 139, 0.5) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(72, 61, 139, 0.3) 25%, rgba(72, 61, 139, 0.2) 26%, transparent 27%, transparent 74%, rgba(72, 61, 139, 0.3) 75%, rgba(72, 61, 139, 0.2) 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+}
+
+.topGrid {
+  top: 0;
+  transform: perspective(300px) rotateX(80deg) translateY(0);
+  animation: flyTop 2s linear infinite;
+}
+
+.bottomGrid {
+  bottom: 0;
+  transform: perspective(300px) rotateX(-80deg) translateY(0);
+  animation: flyBottom 2s linear infinite;
+}
+
+.horizontalLine {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(123, 104, 238, 0.8);
+  box-shadow: 0 0 10px rgba(123, 104, 238, 0.5), 0 0 20px rgba(123, 104, 238, 0.3), 0 0 30px rgba(123, 104, 238, 0.2);
+  z-index: 600;
+}
+
+@keyframes flyTop {
+  0% {
+    transform: perspective(300px) rotateX(80deg) translateY(0);
+  }
+  100% {
+    transform: perspective(300px) rotateX(80deg) translateY(50px);
+  }
+}
+
+@keyframes flyBottom {
+  0% {
+    transform: perspective(300px) rotateX(-80deg) translateY(0);
+  }
+  100% {
+    transform: perspective(300px) rotateX(-80deg) translateY(-50px);
+  }
 }
