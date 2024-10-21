@@ -16,7 +16,7 @@
 
 .monitorFrame {
     background-color: #ffffff11;
-    border: 1px solid #00ff00c4;
+    border: 3px solid #00ff00c4;
     border-radius: 7px;
     box-shadow: 0 0 15px rgba(72, 255, 0, 0.404);
     z-index: 3;

@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import styles from '../styles/Terminal.module.css';
 import Home from './sections/Home';
 import About from './sections/About';
+import Skills from './sections/Skills';
 
 interface Tab {
   id: string;
@@ -32,15 +33,21 @@ const Terminal: React.FC<TerminalProps> = ({ isVisible }) => {
           <button
             key={tab.id}
             className={`${styles.tab} ${activeTab === tab.id ? styles.activeTab : ''}`}
-            onClick={() => handleTabClick(tab.id)}
+            onClick={() => setActiveTab(tab.id)}
           >
             {tab.title}
           </button>
         ))}
       </div>
-      <div className={styles.content}>
+      <div className={`${styles.content} ${activeTab === 'about' ? styles.aboutActive : ''}`}>
         {tabs.find(tab => tab.id === activeTab)?.content}
       </div>
+      {activeTab === 'about' && (
+        <div className={styles.skillsTerminal}>
+          <div className={styles.skillsHeader}>Skills</div>
+          <Skills />
+        </div>
+      )}
     </div>
   );
 };
