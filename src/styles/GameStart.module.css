@@ -1,29 +1,31 @@
 .container {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 40vw;
+    height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2;
-    transition: all 1s ease-in-out;
+    transition: all 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform-origin: center center;
     overflow: hidden;
+    padding: 10px;
+    image-rendering: pixelated;
 }
 
-.container.transitioning {
+.container.zoomOut {
+    transform: scale(20);
     opacity: 0;
+    z-index: 1;
 }
 
 .monitorFrame {
-    background-color: #ffffff11;
-    border: 3px solid #00ff00c4;
-    border-radius: 7px;
-    box-shadow: 0 0 15px rgba(72, 255, 0, 0.404);
-    z-index: 3;
-    width: 80vw;
-    max-width: 1200px;
-    aspect-ratio: 16 / 9;
+    
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100% !important;
+    z-index: 3;
     flex-direction: column;
     transition: all 2s cubic-bezier(0.25, 0.1, 0.25, 1);
     transform-origin: center center;
@@ -38,28 +40,134 @@
 .screen {
     display: flex;
     flex-direction: column;
-    background-color: #000000ec;
     border-radius: 5px;
     overflow: hidden;
-    padding: 10px;
     box-sizing: border-box;
 }
 
 .terminalContent {
     display: flex;
     flex-direction: column;
+    justify-content: space-between !important;
     font-family: 'Courier New', monospace;
     color: #00ff00;
-    font-size: 14px;
     line-height: 1.2;
     flex-grow: 1;
     overflow: hidden;
 }
 
 .terminalText {
+    display: flex;
+    border: 3px solid #494e47;
+    box-shadow: 0 0 15px #1f1d1d;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 45vh !important;
     flex-grow: 1;
-    overflow-y: auto;
+    background: #00ff0021;
+    padding: 10px 10px 10px 10px;
+    border-radius: 4px;
     margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1.25vh;
+    overflow-y: auto;
+    position: relative;
+    text-shadow: 0 0 2px #00ff00;
+    animation: flicker 0.3s infinite;
+    font-family: 'Courier New', monospace;
+    white-space: pre;
+    line-height: 1.2;
+}
+
+.terminalLine {
+    visibility: visible;
+    white-space: pre;
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.99;
+    }
+    2% {
+        opacity: 0.95;
+    }
+    8% {
+        opacity: 0.98;
+    }
+    70% {
+        opacity: 0.97;
+    }
+    100% {
+        opacity: 0.99;
+    }
+}
+  
+  .cmdLine {
+    margin-top: 10px;
+    height: 20px;
+  }
+  
+  /* Special styling for the bordered section */
+  .terminalLine:nth-child(8),
+  .terminalLine:nth-child(9),
+  .terminalLine:nth-child(10) {
+    color: #00ff00;
+    text-shadow: 0 0 2px #00ff00;
+  }
+  
+  /* System status lines */
+  .terminalLine:nth-child(13),
+  .terminalLine:nth-child(14),
+  .terminalLine:nth-child(15),
+  .terminalLine:nth-child(16) {
+    padding-left: 4px;
+    color: #00ff99;
+  }
+
+/* Scanline effect */
+.terminalText::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.856),
+        rgba(0, 0, 0, 0.295) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+}
+
+/* Moving scanline */
+.terminalText::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0, 255, 0, 0.034) 50%,
+        transparent
+    );
+    animation: scanline 2s linear infinite;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+@keyframes scanline {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(4090%);
+    }
 }
 
 .asciiArtContainer {
@@ -82,33 +190,17 @@
     height: 300px;
 }
 
-.starField {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.container.transitioning .starField {
-    transform: scale(5);
-}
-
-.star {
-    position: absolute;
-    image-rendering: pixelated;
-    box-shadow: 0 0 4px currentColor;
-}
-
 .startOption {
     font-family: 'Courier New', monospace;
     font-size: 14px;
     color: #00ff00;
+    text-shadow: 0 0 2px #00ff00;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
-    margin-top: 5px;
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    text-shadow: 0 0 5px #00ff00;
 }
 
 .highlighted {
@@ -116,21 +208,9 @@
     text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
 }
 
-.monitorButtons {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
-}
-
-.container.transitioning .circuitLine,
-.container.transitioning .electron {
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
 }
 
 @media (max-width: 768px) {

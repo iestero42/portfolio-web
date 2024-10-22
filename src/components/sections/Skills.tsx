@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Skills.module.css';
 
+interface Skill {
+  name: string;
+  level: number; // 0 to 100
+}
+
 const Skills: React.FC = () => {
   const [visibleSkills, setVisibleSkills] = useState<number>(0);
-  const skills = [
-    "JavaScript",
-    "TypeScript",
-    "React",
-    "Node.js",
-    "Python",
-    "SQL",
-    "HTML/CSS",
-    "Git",
-    "Docker",
-    "AWS",
+  const skills: Skill[] = [
+    { name: "JavaScript", level: 90 },
+    { name: "TypeScript", level: 85 },
+    { name: "React", level: 88 },
+    { name: "Node.js", level: 82 },
+    { name: "Python", level: 75 },
+    { name: "SQL", level: 80 },
+    { name: "HTML/CSS", level: 95 },
+    { name: "Git", level: 85 },
+    { name: "Docker", level: 70 },
+    { name: "AWS", level: 65 },
   ];
 
   useEffect(() => {
@@ -24,16 +29,38 @@ const Skills: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const renderProgressBar = (level: number, index: number) => {
+    const segments = 20; // Total number of segments in the progress bar
+    const filledSegments = Math.round((level / 100) * segments);
+    const emptySegments = segments - filledSegments;
+
+    return (
+      <pre className={styles.progressBar}>
+        <span className={styles.bracket}>[</span>
+        <span className={`${styles.filled} ${styles.animatedProgress}`} style={{ animationDelay: `${index * 0.2}s` }}>
+          {'='.repeat(filledSegments)}
+          {'>'}
+        </span>
+        <span className={styles.empty}>{' '.repeat(emptySegments)}</span>
+        <span className={styles.bracket}>]</span>
+        <span className={styles.percentage}> {level}%</span>
+      </pre>
+    );
+  };
+
   return (
     <div className={styles.skills}>
-      <div className={styles.skillsHeader}>$ ls skills</div>
-      <ul className={styles.skillsList}>
+      <div className={styles.skillsHeader}>$ sudo apt install skills</div>
+      <div className={styles.skillsList}>
         {skills.slice(0, visibleSkills).map((skill, index) => (
-          <li key={index} className={styles.skillItem}>
-            <span className={styles.bullet}>{'>'}</span> {skill}
-          </li>
+          <div key={index} className={styles.skillItem}>
+            <div className={styles.skillName}>
+              <span className={styles.bullet}>{'>>'}</span> {skill.name}
+            </div>
+            {renderProgressBar(skill.level, index)}
+          </div>
         ))}
-      </ul>
+      </div>
       {visibleSkills === skills.length && (
         <div className={styles.cursor}>_</div>
       )}

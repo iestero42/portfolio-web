@@ -1,8 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import styles from '../styles/Terminal.module.css';
+
 import Home from './sections/Home';
 import About from './sections/About';
 import Skills from './sections/Skills';
+import Projects from './sections/Projects';
+import ProjectDetails from './sections/ProjectDetails';
+import Contact from './sections/Contact';
 
 interface Tab {
   id: string;
@@ -16,10 +20,13 @@ interface TerminalProps {
 
 const Terminal: React.FC<TerminalProps> = ({ isVisible }) => {
   const [activeTab, setActiveTab] = useState<string>('home');
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
   const tabs: Tab[] = [
-    { id: 'home', title: 'Home', content: <Home /> },
-    { id: 'about', title: 'About', content: <About /> },
+    { id: 'home', title: 'HOME', content: <Home /> },
+    { id: 'about', title: 'ABOUT', content: <About /> },
+    { id: 'projects', title: 'PROJECTS', content: <Projects onProjectSelect={setSelectedProject} /> },
+    { id: 'contactMe', title: 'CONTACT ME', content: <Contact /> },
   ];
 
   const handleTabClick = useCallback((tabId: string) => {
@@ -48,6 +55,16 @@ const Terminal: React.FC<TerminalProps> = ({ isVisible }) => {
           <Skills />
         </div>
       )}
+      {activeTab === 'projects' && selectedProject && (
+          <div className={styles.projectDetailsTerminal}>
+            <ProjectDetails projectId={selectedProject} onClose={() => setSelectedProject(null)} />
+          </div>
+        )}
+      {activeTab === 'ContactMe' && selectedProject && (
+          <div className={styles.projectDetailsTerminal}>
+            <ProjectDetails projectId={selectedProject} onClose={() => setSelectedProject(null)} />
+          </div>
+        )}
     </div>
   );
 };

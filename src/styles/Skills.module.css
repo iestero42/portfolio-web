@@ -1,53 +1,116 @@
 .skills {
-    font-family: 'Courier New', monospace;
-    color: #0f0;
-    padding: 10px;
-  }
-  
-  .skillsHeader {
-    font-weight: bold;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #0f0;
-    padding-bottom: 5px;
-  }
-  
-  .skillsList {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .skillItem {
-    margin-bottom: 5px;
+  font-family: 'Courier New', monospace;
+  color: #0f0;
+  padding: 10px;
+}
+
+.skillsHeader {
+  font-weight: bold;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #0f0;
+  padding-bottom: 5px;
+}
+
+.skillsList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skillItem {
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.skillName {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.bullet {
+  color: #0f0;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.progressBar {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.bracket {
+  color: #0f0;
+  opacity: 0.8;
+}
+
+.filled {
+  color: #0f0;
+  text-shadow: 0 0 10px #0f0;
+  opacity: 0;
+  animation: loadingProgress 1s ease-out forwards;
+}
+
+.empty {
+  color: #0f0;
+  opacity: 0.3;
+}
+
+.percentage {
+  margin-left: 10px;
+  color: #0f0;
+  opacity: 0.8;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background-color: #0f0;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes fadeIn {
+  from {
     opacity: 0;
-    animation: fadeIn 0.5s ease-in-out forwards;
+    transform: translateY(5px);
   }
-  
-  .bullet {
-    color: #0ff;
-    margin-right: 5px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .cursor {
-    display: inline-block;
-    width: 10px;
-    height: 20px;
-    background-color: #0f0;
-    animation: blink 0.7s infinite;
+}
+
+@keyframes loadingProgress {
+  0% {
+    opacity: 0;
+    text-shadow: none;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(5px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 10px #0f0;
   }
-  
-  @keyframes blink {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
+  100% {
+    opacity: 0.8;
+    text-shadow: 0 0 5px #0f0;
   }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.skillItem:hover .filled {
+  opacity: 1;
+  text-shadow: 0 0 15px #0f0, 0 0 25px #0f0;
+}
+
+.skillItem:hover .skillName {
+  text-shadow: 0 0 5px #0f0;
+}

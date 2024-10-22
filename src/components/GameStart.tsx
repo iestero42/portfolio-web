@@ -9,6 +9,7 @@ interface GameStartProps {
 }
 
 const GameStart: React.FC<GameStartProps> = ({ onStart, isTransitioning }) => {
+  const [visibleLines, setVisibleLines] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -22,31 +23,54 @@ const GameStart: React.FC<GameStartProps> = ({ onStart, isTransitioning }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (visibleLines < terminalLines.length) {
+      const timer = setTimeout(() => {
+        setVisibleLines(prev => prev + 1);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [visibleLines]);
+
   const startGame = () => {
     onStart();
   };
 
-  const portfolioArt = `
+  const boxWidth = 50; // Width of the box in characters
+  const title = "NEURAL INTERFACE v2.0";
+  const padding = Math.floor((boxWidth - title.length - 2) / 2); // Calculate padding for centering
+  const leftPad = padding + (title.length % 2); // Adjust left padding for odd-length titles
+  const rightPad = boxWidth - title.length - leftPad;
 
-  ██▓███   ▒█████   ██▀███  ▄▄▄█████▓  █████▒▒█████   ██▓     ██▓ ▒█████  
-  ▓██░  ██▒▒██▒  ██▒▓██ ▒ ██▒▓  ██▒ ▓▒▓██   ▒▒██▒  ██▒▓██▒    ▓██▒▒██▒  ██▒
-  ▓██░ ██▓▒▒██░  ██▒▓██ ░▄█ ▒▒ ▓██░ ▒░▒████ ░▒██░  ██▒▒██░    ▒██▒▒██░  ██▒
-  ▒██▄█▓▒ ▒▒██   ██░▒██▀▀█▄  ░ ▓██▓ ░ ░▓█▒  ░▒██   ██░▒██░    ░██░▒██   ██░
-  ▒██▒ ░  ░░ ████▓▒░░██▓ ▒██▒  ▒██▒ ░ ░▒█░   ░ ████▓▒░░██████▒░██░░ ████▓▒░
-  ▒▓▒░ ░  ░░ ▒░▒░▒░ ░ ▒▓ ░▒▓░  ▒ ░░    ▒ ░   ░ ▒░▒░▒░ ░ ▒░▓  ░░▓  ░ ▒░▒░▒░ 
-  ░▒ ░       ░ ▒ ▒░   ░▒ ░ ▒░    ░     ░       ░ ▒ ▒░ ░ ░ ▒  ░ ▒ ░  ░ ▒ ▒░ 
-  ░░       ░ ░ ░ ▒    ░░   ░   ░       ░ ░   ░ ░ ░ ▒    ░ ░    ▒ ░░ ░ ░ ▒  
-               ░ ░     ░                         ░ ░      ░  ░ ░      ░ ░  
-                                                                             
-  `;
+  const terminalLines = [
+    "SYSTEM INITIALIZATION",
+    "━━━━━━━━━━━━━━━━━━━━",
+    "",
+    "Establishing neural link...",
+    "Initializing quantum core...",
+    "Loading AI modules...",
+    "",
+    `╔${'═'.repeat(boxWidth)}╗`,
+    `║${' '.repeat(leftPad)}${title}${' '.repeat(rightPad)}║`,
+    `╚${'═'.repeat(boxWidth)}╝`,
+    "",
+    "CORE SYSTEMS:",
+    "> Quantum Processing: ONLINE",
+    "> Neural Network: ACTIVE",
+    "> Defense Systems: ENGAGED",
+    "> Access Level: RESTRICTED",
+    "",
+    "Awaiting authorization...",
+    "",
+    "[PRESS START TO INITIALIZE]"
+  ];
 
   return (
-    <div className={`${styles.container} ${isTransitioning ? styles.transitioning : ''}`}>
+    <div className={`${styles.container} ${isTransitioning ? styles.zoomOut : ''}`}>
       <div className={`${styles.monitorFrame} ${isTransitioning ? styles.zoomOut : ''}`}>
         <div className={styles.screen}>
           <div className={styles.terminalContent}>
             <div className={styles.asciiArtContainer}>
-              <pre className={styles.asciiArt}>{portfolioArt}</pre>
               <div className={styles.brainContainer}>
                 <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
                     <ambientLight intensity={0.5} />
@@ -56,64 +80,21 @@ const GameStart: React.FC<GameStartProps> = ({ onStart, isTransitioning }) => {
               </div>
             </div>
             <div className={styles.terminalText}>
-              FONTAINE ELECTRIC CORPORATION
-              <br />
-              NeuroLink OS v3.14.15
-              <br />
-              <br />
-              Initializing system...
-              <br />
-              Checking hardware integrity... OK
-              <br />
-              Loading neural interfaces... OK
-              <br />
-              Establishing quantum entanglement... OK
-              <br />
-              <br />
-              WARNING: Unauthorized access detected
-              <br />
-              Activating defense protocols...
-              <br />
-              <br />
-              ===== SECURE SHELL LOGIN =====
-              <br />
-              Clearance level ALPHA required
-              <br />
-              <br />
-              Enter neural-key sequence:
-              <br />
-              Password: ******************
-              <br />
-              <br />
-              Verifying biometric signature...
-              <br />
-              Scanning retinal patterns...
-              <br />
-              Analyzing brainwave frequencies...
-              <br />
-              <br />
-              Access: DENIED
-              <br />
-              Remaining attempts: 3
-              <br />
-              <br />
-              ALERT: Synaptic firewall engaged
-              <br />
-              Trace program initiated
-              <br />
-              <br />
+              {terminalLines.map((line, index) => (
+                <div key={index} className={index < visibleLines ? styles.terminalLines : styles.terminalLinesHidden}>{line}</div>
+              ))}
               &gt; {showCursor ? '_' : ' '}
             </div>
-            <div 
+          </div>
+        </div>
+        <div 
               className={`${styles.startOption} ${isHovered ? styles.highlighted : ''}`}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               onClick={startGame}
             >
-              {isHovered ? '---> Start' : 'Start'}
+              {isHovered ? '>> INITIALIZE <<' : 'START'}
             </div>
-          </div>
-        </div>
       </div>
     </div>
   );
