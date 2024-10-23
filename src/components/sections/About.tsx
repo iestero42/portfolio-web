@@ -82,7 +82,7 @@ const About: React.FC = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [commands.length]);
 
   return (
     <div className={styles.about}>
