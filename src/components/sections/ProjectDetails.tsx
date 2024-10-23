@@ -11,28 +11,50 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ projectId, onClose }) =
 
   const projectDetails = {
     project1: {
-      name: 'Neural Network Visualizer',
+      name: 'Minimal Unix Shell',
       description: [
-        'An interactive visualization tool for neural networks.',
-        'Features real-time training visualization and',
-        'network architecture manipulation.',
+        'A minimal implementation of a Unix shell with',
+        'built-in commands and custom signal handling.',
         '',
         'Key Features:',
-        '- Interactive node manipulation',
-        '- Real-time weight updates',
-        '- Custom dataset integration',
-        '- Performance metrics visualization'
+        '- Command execution',
+        '- Signal handling',
+        '- Built-in commands',
+        '- Custom environment variables',
+        '- History and auto-completion',
+        '- Concurrent command execution'
       ],
-      technologies: ['React', 'TypeScript', 'D3.js', 'TensorFlow.js'],
-      github: 'https://github.com/yourusername/neural-viz',
-      live: 'https://neural-viz.example.com',
+      technologies: ['C', 'Linux'],
+      github: 'https://github.com/iestero42/minishell',
+      live: '',
       metrics: [
         'Test Coverage: 94%',
         'Performance Score: 98',
         'Users: 1,200+'
       ]
     },
-    // Add other projects similarly...
+    project2: {
+      name: 'Marx AI',
+      description: [
+        'A trading bot that uses machine learning',
+        'to predict stock market trends and make',
+        'automated trades based on historical data.',
+        '',
+        'Key Features:',
+        '- Data collection from APIs',
+        '- Machine learning model training',
+        '- Real-time market analysis',
+        '- Automated trading strategies',
+      ],
+      technologies: ['Python', 'TensorFlow', 'Finance', 'APIs'],
+      github: 'https://github.com/iestero42/marxIA',
+      live: '',
+      metrics: [
+        'Test Coverage: 94%',
+        'Performance Score: 98',
+        'Users: 1,200+'
+      ]
+    },
   };
 
   const project = projectDetails[projectId as keyof typeof projectDetails];
@@ -68,7 +90,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ projectId, onClose }) =
             <div className={styles.output}>
               {project.description.map((line, index) => (
                 <div key={index} className={styles.line}>
-                  {line.startsWith('-') ? <><span className={styles.bullet}></span> {line.slice(2)}</> : line}
+                  {line.startsWith('-') ? <><span className={styles.bullet}>></span> {line.slice(2)}</> : line}
                 </div>
               ))}
             </div>
@@ -94,11 +116,11 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ projectId, onClose }) =
             <div className={styles.output}>
               <div className={styles.links}>
                 <div>
-                  <span className={styles.bullet}> </span>
+                  <span className={styles.bullet}> ></span>
                   Repository: <a href={project.github} target="_blank" rel="noopener noreferrer">{project.github}</a>
                 </div>
-                <div>
-                  <span className={styles.bullet}> </span>
+                <div className={project.live.length == 1 ? '' : styles.visible}>
+                  <span className={styles.bullet}>></span>
                   Live Demo: <a href={project.live} target="_blank" rel="noopener noreferrer">{project.live}</a>
                 </div>
               </div>

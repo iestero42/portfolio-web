@@ -27,9 +27,10 @@ const Contact: React.FC = () => {
       content: [
         '[CONNECTION ESTABLISHED]',
         '',
-        '> Email:    your.email@example.com',
-        '> Github:   github.com/yourusername',
-        '> LinkedIn: linkedin.com/in/yourprofile',
+        '> Email:    business.israel.estero@gmail.com',
+        '> Github:   https://github.com/iestero42',
+        '> LinkedIn: www.linkedin.com/in/israel-estero-agueda',
+        '> LeetCode:  https://leetcode.com/u/0000000000000000000/',
         '',
       ]
     },
@@ -48,8 +49,7 @@ const Contact: React.FC = () => {
         '',
         'CURRENTLY:',
         '> Open to new projects',
-        '> Available for freelance work',
-        '> Interested in collaborations',
+        '> Available for new opportunities',
         '',
       ]
     },
@@ -93,7 +93,7 @@ const Contact: React.FC = () => {
             </div>
           ) : (
             <div className={styles.response}>
-              {section.content.map((line, lineIndex) => (
+              {section.content.map((line: string, lineIndex: number) => (
                 <div 
                   key={lineIndex} 
                   className={`${styles.line} ${line.startsWith('>') ? styles.highlight : ''}`}

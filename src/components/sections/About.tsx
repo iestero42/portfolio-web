@@ -13,16 +13,17 @@ const About: React.FC = () => {
     {
       command: "whoami",
       output: [
-        "John Doe",
-        "Full Stack Developer",
-        "Location: Silicon Valley, CA"
+        "Israel Estero Agueda",
+        "Full Stack Engineer",
+        "Location: Arroyomolinos, Spain"
       ]
     },
     {
       command: "cat personal-info.txt",
       output: [
-        "I am a passionate developer with 5+ years of experience",
-        "building web applications and solving complex problems.",
+        "I am a passionate software engineer with nearly a year of experience",
+        "in full stack development. I specialize in backend technologies",
+        "but also have experience with frontend frameworks.",
         "Currently working on innovative projects and",
         "always eager to learn new technologies."
       ]
@@ -33,12 +34,12 @@ const About: React.FC = () => {
         ">> Communication",
         "   - Clear and effective communication",
         "   - Technical documentation",
-        "   - Public speaking",
+        "   - Social skills",
         "",
         ">> Leadership",
         "   - Team management",
         "   - Project coordination",
-        "   - Mentoring",
+        "   - Decision making",
         "",
         ">> Problem Solving",
         "   - Critical thinking",
@@ -49,10 +50,12 @@ const About: React.FC = () => {
     {
       command: "cat education.txt",
       output: [
-        "B.S. Computer Science",
-        "Tech University",
-        "Graduation: 2020",
-        "GPA: 3.8/4.0"
+        " >> B.S. Software Engineering",
+        "     - Polytechnic University of Madrid",
+        "     - Graduation: 2025",
+        " >> B.S. Computer Science",
+        "     - 42 Madrid",
+        "     - Graduation: 2025",
       ]
     },
     {
@@ -60,13 +63,15 @@ const About: React.FC = () => {
       output: [
         ">> Professional",
         "   - Artificial Intelligence",
-        "   - Open Source Development",
-        "   - Cloud Computing",
+        "   - Develop new technologies",
+        "   - Quantum Computing",
         "",
         ">> Personal",
-        "   - Photography",
-        "   - Playing Guitar",
-        "   - Hiking"
+        "   - Video Games",
+        "   - Rock Climbing",
+        "   - Hiking",
+        "   - Traveling",
+        "   - Reading"
       ]
     }
   ];

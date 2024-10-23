@@ -9,16 +9,18 @@ interface Skill {
 const Skills: React.FC = () => {
   const [visibleSkills, setVisibleSkills] = useState<number>(0);
   const skills: Skill[] = [
-    { name: "JavaScript", level: 90 },
-    { name: "TypeScript", level: 85 },
-    { name: "React", level: 88 },
+    { name: "JavaScript", level: 70 },
+    { name: "TypeScript", level: 70 },
+    { name: "React", level: 60 },
     { name: "Node.js", level: 82 },
-    { name: "Python", level: 75 },
-    { name: "SQL", level: 80 },
-    { name: "HTML/CSS", level: 95 },
+    { name: "Python", level: 85 },
+    { name: "SQL", level: 85 },
+    { name: "HTML/CSS", level: 90 },
     { name: "Git", level: 85 },
     { name: "Docker", level: 70 },
-    { name: "AWS", level: 65 },
+    { name: "Java", level: 90 },
+    { name: "C/C++", level: 95 },
+    { name: "Linux", level: 80 },
   ];
 
   useEffect(() => {

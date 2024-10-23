@@ -19,22 +19,16 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   const projects: Project[] = [
     {
       id: 'project1',
-      name: 'Neural Network Visualizer',
-      shortDesc: 'Interactive visualization of neural networks',
-      tags: ['React', 'TypeScript', 'D3.js']
+      name: 'MINISHELL',
+      shortDesc: 'Minimal Unix shell implementation',
+      tags: ['C']
     },
     {
       id: 'project2',
-      name: 'Cloud Data Manager',
-      shortDesc: 'Advanced cloud storage solution',
-      tags: ['Node.js', 'AWS', 'MongoDB']
+      name: 'MARXIA',
+      shortDesc: 'A trading bot for the stock market',
+      tags: ['Python', 'APIs', 'Finance']
     },
-    {
-      id: 'project3',
-      name: 'Crypto Trading Bot',
-      shortDesc: 'Automated cryptocurrency trading system',
-      tags: ['Python', 'Machine Learning', 'APIs']
-    }
   ];
 
   useEffect(() => {

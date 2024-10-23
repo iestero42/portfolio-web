@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 const Brain3D = () => {
-  const meshRef = useRef();
+  const meshRef = useRef<THREE.Mesh>(null);
 
   const brainGeometry = useMemo(() => {
     // Create base geometry with more segments for better detail
@@ -108,7 +108,7 @@ const Brain3D = () => {
       // Gentle bobbing motion
       meshRef.current.position.y = Math.sin(state.clock.elapsedTime) * 0.1;
       // Update shader time
-      meshRef.current.material.uniforms.time.value += delta;
+      (meshRef.current.material as THREE.ShaderMaterial).uniforms.time.value += delta;
     }
   });
 
