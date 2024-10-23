@@ -1,0 +1,111 @@
+.contact {
+    height: 100%;
+    font-family: 'Courier New', monospace;
+    color: #0f0;
+    overflow-y: auto;
+  }
+  
+  .section {
+    margin-bottom: 15px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .commandLine {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .prompt {
+    color: #0f0;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .command {
+    color: #0ff;
+    animation: typing 1s steps(30);
+  }
+  
+  .response {
+    margin-left: 20px;
+  }
+  
+  .line {
+    margin-bottom: 5px;
+    animation: fadeIn 0.3s ease-in-out;
+    white-space: pre-wrap;
+  }
+  
+  .highlight {
+    color: #0ff;
+    opacity: 0.9;
+  }
+  
+  .cursor {
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    background-color: #0f0;
+    animation: blink 0.7s infinite;
+  }
+  
+  /* Links styling */
+  .line a {
+    color: #0f0;
+    text-decoration: none;
+    border-bottom: 1px solid #0f0;
+    transition: all 0.3s ease;
+  }
+  
+  .line a:hover {
+    color: #0ff;
+    border-bottom-color: #0ff;
+    text-shadow: 0 0 5px #0ff;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0;
+      opacity: 0;
+    }
+    to {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  
+  /* Scrollbar styling */
+  .contact::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .contact::-webkit-scrollbar-track {
+    background: rgba(0, 255, 0, 0.1);
+  }
+  
+  .contact::-webkit-scrollbar-thumb {
+    background: #0f0;
+    border-radius: 4px;
+  }
+  
+  .contact::-webkit-scrollbar-thumb:hover {
+    background: #0f0;
+    box-shadow: 0 0 10px #0f0;
+  }

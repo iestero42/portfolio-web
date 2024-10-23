@@ -1,0 +1,120 @@
+.projects {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Courier New', monospace;
+  color: #0f0;
+  outline: none;
+}
+
+.header, .footer {
+  flex-shrink: 0; /* Prevents shrinking */
+  padding: 10px 0;
+}
+
+.ascii {
+  color: #0f0;
+  margin: 0;
+  line-height: 1.2;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+.content {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin: 10px 0;
+  padding: 0 10px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.content.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s ease-out;
+}
+
+.projectItem {
+  margin-bottom: 20px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.projectItem:hover {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.selected {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.projectHeader {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  color: #0f0;
+}
+
+.projectDesc {
+  color: #0f0;
+  opacity: 0.8;
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
+.projectTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-left: 20px;
+}
+
+.tag {
+  color: #0f0;
+  opacity: 0.7;
+}
+
+/* Scrollbar styling */
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #0f0;
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: #0f0;
+  box-shadow: 0 0 10px #0f0;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #0f0;
+  }
+  to {
+    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+  }
+}
+
+/* Remove scrollbar from main container */
+.projects::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fixed positioning for ASCII borders */
+.ascii {
+  white-space: pre;
+  width: 100%;
+  text-align: center;
+}
+
+/* Add padding to prevent content from touching scrollbar */
+.content {
+  padding-right: 15px;
+}

@@ -1,0 +1,97 @@
+.about {
+  font-family: 'Courier New', monospace;
+  display: flex;
+  flex-direction: column;
+  color: #0f0;
+  padding: 10px;
+}
+
+.commandBlock {
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.commandLine {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.prompt {
+  color: #0f0;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.command {
+  color: #0ff;
+  animation: typing 0.5s steps(30);
+}
+
+.output {
+  margin-left: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.line {
+  margin-bottom: 5px;
+  white-space: pre-wrap;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.category {
+  color: #0ff;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background-color: #0f0;
+  margin-left: 5px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.commandBlock:hover .command {
+  text-shadow: 0 0 5px #0ff;
+}
+
+.commandBlock:hover .output {
+  text-shadow: 0 0 3px #0f0;
+}
+
+/* Style for command suggestion hint that appears at the end */
+.hint {
+  color: #666;
+  font-style: italic;
+  margin-top: 20px;
+}
