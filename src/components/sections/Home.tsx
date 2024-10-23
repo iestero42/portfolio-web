@@ -63,7 +63,7 @@ const Home: React.FC = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [sections.length]);
 
   return (
     <div className={styles.home}>

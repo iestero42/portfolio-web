@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import Brain3D from './Brain3D';
 import styles from '../styles/GameStart.module.css';
@@ -12,29 +12,6 @@ const GameStart: React.FC<GameStartProps> = ({ onStart, isTransitioning }) => {
   const [visibleLines, setVisibleLines] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev);
-    }, 500);
-
-    return () => {
-      clearInterval(cursorInterval);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (visibleLines < terminalLines.length) {
-      const timer = setTimeout(() => {
-        setVisibleLines(prev => prev + 1);
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [visibleLines]);
-
-  const startGame = () => {
-    onStart();
-  };
 
   const boxWidth = 50; // Width of the box in characters
   const title = "NEURAL INTERFACE v2.0";
@@ -64,6 +41,29 @@ const GameStart: React.FC<GameStartProps> = ({ onStart, isTransitioning }) => {
     "",
     "[PRESS START TO INITIALIZE]"
   ];
+
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500);
+
+    return () => {
+      clearInterval(cursorInterval);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (visibleLines < terminalLines.length) {
+      const timer = setTimeout(() => {
+        setVisibleLines(prev => prev + 1);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [visibleLines, terminalLines.length]);
+
+  const startGame = () => {
+    onStart();
+  };
 
   return (
     <div className={`${styles.container} ${isTransitioning ? styles.zoomOut : ''}`}>

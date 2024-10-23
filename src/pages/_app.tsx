@@ -1,22 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect} from 'react';
 import { useRouter } from 'next/router';
 import GameStart from '../components/GameStart';
 import Terminal from '../components/Terminal';
 import '../styles/global.css';
 import Background from '@/components/Background';
 
-import type { AppProps } from 'next/app';
-
-interface Particle {
-  x: number;
-  y: number;
-  speed: { x: number; y: number };
-  color: string;
-  update: (ctx: CanvasRenderingContext2D) => void;
-}
-
-function MyApp({ Component, pageProps }: AppProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+function MyApp() {
   const [isLoading, setIsLoading] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const router = useRouter();

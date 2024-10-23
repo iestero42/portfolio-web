@@ -77,7 +77,7 @@ const Contact: React.FC = () => {
       }, 500);
       return () => clearTimeout(timer);
     }
-  }, [visibleSections]);
+  }, [visibleSections, sections.length]);
 
   return (
     <div className={styles.contact}>
@@ -93,14 +93,20 @@ const Contact: React.FC = () => {
             </div>
           ) : (
             <div className={styles.response}>
-              {section.content.map((line: string, lineIndex: number) => (
-                <div 
-                  key={lineIndex} 
-                  className={`${styles.line} ${line.startsWith('>') ? styles.highlight : ''}`}
-                >
-                  {line}
+              {Array.isArray(section.content) ? (
+                section.content.map((line: string, lineIndex: number) => (
+                  <div 
+                    key={lineIndex} 
+                    className={`${styles.line} ${line.startsWith('>') ? styles.highlight : ''}`}
+                  >
+                    {line}
+                  </div>
+                ))
+              ) : (
+                <div className={styles.line}>
+                  {section.content}
                 </div>
-              ))}
+              )}
             </div>
           )}
         </div>

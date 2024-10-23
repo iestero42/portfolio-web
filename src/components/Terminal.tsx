@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState} from 'react';
 import styles from '../styles/Terminal.module.css';
 
 import Home from './sections/Home';
@@ -28,10 +28,6 @@ const Terminal: React.FC<TerminalProps> = ({ isVisible }) => {
     { id: 'projects', title: 'PROJECTS', content: <Projects onProjectSelect={setSelectedProject} /> },
     { id: 'contactMe', title: 'CONTACT ME', content: <Contact /> },
   ];
-
-  const handleTabClick = useCallback((tabId: string) => {
-    setActiveTab(tabId);
-  }, []);
 
   return (
     <div className={`${styles.terminal} ${isVisible ? styles.visible : ''}`}>

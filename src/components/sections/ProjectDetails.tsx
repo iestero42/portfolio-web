@@ -90,7 +90,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ projectId, onClose }) =
             <div className={styles.output}>
               {project.description.map((line, index) => (
                 <div key={index} className={styles.line}>
-                  {line.startsWith('-') ? <><span className={styles.bullet}>></span> {line.slice(2)}</> : line}
+                  {line.startsWith('-') ? <><span className={styles.bullet}>&gt;</span> {line.slice(2)}</> : line}
                 </div>
               ))}
             </div>
@@ -116,11 +116,11 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ projectId, onClose }) =
             <div className={styles.output}>
               <div className={styles.links}>
                 <div>
-                  <span className={styles.bullet}> ></span>
+                  <span className={styles.bullet}> &gt;</span>
                   Repository: <a href={project.github} target="_blank" rel="noopener noreferrer">{project.github}</a>
                 </div>
                 <div className={project.live.length == 1 ? '' : styles.visible}>
-                  <span className={styles.bullet}>></span>
+                  <span className={styles.bullet}>&gt;</span>
                   Live Demo: <a href={project.live} target="_blank" rel="noopener noreferrer">{project.live}</a>
                 </div>
               </div>
