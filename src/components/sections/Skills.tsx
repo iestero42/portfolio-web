@@ -29,7 +29,7 @@ const Skills: React.FC = () => {
     }, 200);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [skills.length]);
 
   const renderProgressBar = (level: number, index: number) => {
     const segments = 20; // Total number of segments in the progress bar

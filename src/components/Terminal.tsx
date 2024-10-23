@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState} from 'react';
 import styles from '../styles/Terminal.module.css';
 
 import Home from './sections/Home';
