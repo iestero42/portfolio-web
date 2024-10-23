@@ -29,10 +29,6 @@ const Terminal: React.FC<TerminalProps> = ({ isVisible }) => {
     { id: 'contactMe', title: 'CONTACT ME', content: <Contact /> },
   ];
 
-  const handleTabClick = useCallback((tabId: string) => {
-    setActiveTab(tabId);
-  }, []);
-
   return (
     <div className={`${styles.terminal} ${isVisible ? styles.visible : ''}`}>
       <div className={styles.tabBar}>
