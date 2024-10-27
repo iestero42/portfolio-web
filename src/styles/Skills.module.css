@@ -1,7 +1,10 @@
+/* Skills.module.css */
 .skills {
   font-family: 'Courier New', monospace;
   color: #0f0;
   padding: 10px;
+  height: 96%;
+  overflow-y: auto;
 }
 
 .skillsHeader {
@@ -9,6 +12,7 @@
   margin-bottom: 20px;
   border-bottom: 1px solid #0f0;
   padding-bottom: 5px;
+  font-size: 14px;
 }
 
 .skillsList {
@@ -27,6 +31,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  font-size: 14px;
 }
 
 .bullet {
@@ -42,6 +47,7 @@
   line-height: 1;
   display: flex;
   align-items: center;
+  font-size: 12px;
 }
 
 .bracket {
@@ -75,6 +81,57 @@
   animation: blink 0.7s infinite;
 }
 
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  .skillsHeader {
+    font-size: 13px;
+  }
+
+  .skillName {
+    font-size: 13px;
+  }
+
+  .progressBar {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .skillsHeader {
+    font-size: 12px;
+  }
+
+  .skillName {
+    font-size: 12px;
+  }
+
+  .progressBar {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .skillsHeader {
+    font-size: 11px;
+    margin-bottom: 15px;
+  }
+
+  .skillName {
+    font-size: 11px;
+  }
+
+  .progressBar {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .skillItem {
+    margin-bottom: 12px;
+  }
+}
+
+/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -106,6 +163,7 @@
   50% { opacity: 1; }
 }
 
+/* Hover effects */
 .skillItem:hover .filled {
   opacity: 1;
   text-shadow: 0 0 15px #0f0, 0 0 25px #0f0;
@@ -113,4 +171,23 @@
 
 .skillItem:hover .skillName {
   text-shadow: 0 0 5px #0f0;
+}
+
+/* Scrollbar styling */
+.skills::-webkit-scrollbar {
+  width: 6px;
+}
+
+.skills::-webkit-scrollbar-track {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.skills::-webkit-scrollbar-thumb {
+  background: #0f0;
+  border-radius: 3px;
+}
+
+.skills::-webkit-scrollbar-thumb:hover {
+  background: #0f0;
+  box-shadow: 0 0 10px #0f0;
 }

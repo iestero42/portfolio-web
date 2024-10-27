@@ -25,7 +25,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
     },
     {
       id: 'project2',
-      name: 'MARXIA',
+      name: 'MARX AI',
       shortDesc: 'A trading bot for the stock market',
       tags: ['Python', 'APIs', 'Finance']
     },

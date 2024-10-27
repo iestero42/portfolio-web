@@ -1,48 +1,43 @@
 .container {
     position: absolute;
     width: 40vw;
-    height: 85vh;
+    height: 95vh; /* Changed from 85vh to give more space */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2;
     transition: all 2s cubic-bezier(0.25, 0.1, 0.25, 1);
     transform-origin: center center;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to allow content to show fully */
     padding: 10px;
     image-rendering: pixelated;
 }
 
 .container.zoomOut {
-    transform: scale(20);
+    transform: scale(0);
     opacity: 0;
-    z-index: 1;
+    z-index: 0;
 }
 
 .monitorFrame {
-    
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
     width: 100%;
-    height: 100% !important;
+    height: 100%;
     z-index: 3;
     flex-direction: column;
     transition: all 2s cubic-bezier(0.25, 0.1, 0.25, 1);
     transform-origin: center center;
 }
 
-.monitorFrame.zoomOut {
-    transform: scale(20);
-    opacity: 0;
-    z-index: 1;
-}
-
 .screen {
     display: flex;
     flex-direction: column;
     border-radius: 5px;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to allow content to show */
     box-sizing: border-box;
+    height: auto; /* Added to allow content to determine height */
+    min-height: 60vh; /* Added minimum height */
 }
 
 .terminalContent {
@@ -53,7 +48,7 @@
     color: #00ff00;
     line-height: 1.2;
     flex-grow: 1;
-    overflow: hidden;
+    height: auto; /* Added to allow content to determine height */
 }
 
 .terminalText {
@@ -62,13 +57,13 @@
     box-shadow: 0 0 15px #1f1d1d;
     flex-direction: column;
     justify-content: space-between;
-    height: 45vh !important;
+    min-height: 55vh; /* Changed from fixed height to minimum height */
+    height: auto; /* Allow content to determine actual height */
     flex-grow: 1;
     background: #00ff0021;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     border-radius: 4px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 10px;
     font-size: 1.25vh;
     overflow-y: auto;
     position: relative;
@@ -77,6 +72,28 @@
     font-family: 'Courier New', monospace;
     white-space: pre;
     line-height: 1.2;
+}
+
+/* Update media queries to handle height better */
+@media (max-width: 768px) {
+    .container {
+        height: 100vh;
+        width: 95vw;
+    }
+
+    .terminalText {
+        min-height: 50vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        height: 100vh;
+    }
+    
+    .terminalText {
+        min-height: 60vh;
+    }
 }
 
 .terminalLine {
@@ -153,7 +170,7 @@
     background: linear-gradient(
         to bottom,
         transparent,
-        rgba(0, 255, 0, 0.034) 50%,
+        rgba(0, 255, 0, 0.062) 50%,
         transparent
     );
     animation: scanline 2s linear infinite;
@@ -166,7 +183,7 @@
         transform: translateY(0);
     }
     100% {
-        transform: translateY(4090%);
+        transform: translateY(5300%);
     }
 }
 
@@ -229,6 +246,23 @@
         margin-top: 2vh;
     }
 
+    .terminalText::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.137),
+            rgba(0, 0, 0, 0.103) 1px,
+            transparent 1px,
+            transparent 2px
+        );
+        pointer-events: none;
+    }
+
     .asciiArt {
         font-size: calc(4px + 0.4vw);
     }
@@ -245,6 +279,10 @@
         font-size: calc(6px + 1.2vw);
     }
 
+    .terminalText {
+        font-size: calc(6px + 1.15vw);
+    }
+
     .asciiArt {
         font-size: calc(3px + 0.6vw);
     }
@@ -254,7 +292,53 @@
     }
 
     .brainContainer {
-        width: 70%;
-        height: 70%;
+        width: 80%;
+        height: 92%;
+    }
+
+    .terminalText::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.247),
+            rgba(0, 0, 0, 0.158) 1px,
+            transparent 1px,
+            transparent 2px
+        );
+        pointer-events: none;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .monitorFrame {
+        width: 95vw;
+        height: 95vh;
+    }
+
+    .terminalContent {
+        font-size: calc(6px + 1.2vw);
+    }
+
+    .terminalText {
+        font-size: calc(6px + 0.9vw);
+    }
+
+    .asciiArt {
+        font-size: calc(3px + 0.6vw);
+    }
+
+    .screen {
+        height: 100%;
+    }
+
+    .brainContainer {
+        width: 100%;
+        height: 92%;
     }
 }

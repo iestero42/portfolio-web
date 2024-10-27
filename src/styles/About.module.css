@@ -1,42 +1,53 @@
+/* About.module.css */
 .about {
   font-family: 'Courier New', monospace;
   display: flex;
   flex-direction: column;
   color: #0f0;
-  padding: 10px;
+  padding: 20px;
+  height: inherit;
+  overflow-y: auto;
 }
 
 .commandBlock {
   margin-bottom: 20px;
   animation: fadeIn 0.5s ease-in-out;
+  width: 100%;
 }
 
 .commandLine {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .prompt {
   color: #0f0;
   margin-right: 10px;
   font-weight: bold;
+  font-size: 16px;
 }
 
 .command {
   color: #0ff;
   animation: typing 0.5s steps(30);
+  font-size: 16px;
+  word-break: break-word;
 }
 
 .output {
   margin-left: 20px;
   animation: fadeIn 1s ease-in-out;
+  width: calc(100% - 20px);
 }
 
 .line {
   margin-bottom: 5px;
   white-space: pre-wrap;
   animation: fadeIn 0.3s ease-in-out;
+  word-break: break-word;
+  font-size: 14px;
 }
 
 .category {
@@ -54,6 +65,66 @@
   animation: blink 0.7s infinite;
 }
 
+.hint {
+  color: #666;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  .about {
+    padding: 15px;
+  }
+
+  .prompt, .command {
+    font-size: 14px;
+  }
+
+  .line {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    padding: 12px;
+  }
+
+  .output {
+    margin-left: 15px;
+    width: calc(100% - 15px);
+  }
+
+  .prompt, .command {
+    font-size: 13px;
+  }
+
+  .line {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about {
+    padding: 10px;
+  }
+
+  .output {
+    margin-left: 10px;
+    width: calc(100% - 10px);
+  }
+
+  .prompt, .command {
+    font-size: 12px;
+  }
+
+  .line {
+    font-size: 11px;
+  }
+}
+
+/* Animations */
 @keyframes typing {
   from {
     width: 0;
@@ -81,6 +152,7 @@
   50% { opacity: 1; }
 }
 
+/* Hover effects */
 .commandBlock:hover .command {
   text-shadow: 0 0 5px #0ff;
 }
@@ -89,9 +161,21 @@
   text-shadow: 0 0 3px #0f0;
 }
 
-/* Style for command suggestion hint that appears at the end */
-.hint {
-  color: #666;
-  font-style: italic;
-  margin-top: 20px;
+/* Scrollbar styling */
+.about::-webkit-scrollbar {
+  width: 6px;
+}
+
+.about::-webkit-scrollbar-track {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.about::-webkit-scrollbar-thumb {
+  background: #0f0;
+  border-radius: 3px;
+}
+
+.about::-webkit-scrollbar-thumb:hover {
+  background: #0f0;
+  box-shadow: 0 0 10px #0f0;
 }
