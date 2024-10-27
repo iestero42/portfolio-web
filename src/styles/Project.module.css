@@ -8,7 +8,6 @@
 }
 
 .header, .footer {
-  flex-shrink: 0; /* Prevents shrinking */
   padding: 10px 0;
 }
 
@@ -117,4 +116,25 @@
 /* Add padding to prevent content from touching scrollbar */
 .content {
   padding-right: 15px;
+}
+
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  .header, .footer {
+    padding: 10px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header, .footer {
+    padding: 10px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header, .footer {
+    padding: 10px 0;
+    font-size: 5px;
+  }
 }

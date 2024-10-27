@@ -18,7 +18,7 @@
   box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
 }
 
-.skillsTerminal {
+.skillsTerminal, .projectDetailsTerminal {
   position: absolute;
   top: -25px;
   right: 100px;
@@ -29,25 +29,70 @@
   border: 2px solid #00ff00;
   border-radius: 5px;
   padding: 10px;
-  overflow-y: auto;
   box-shadow: 0 0 10px #00ff00;
   animation: slideIn 0.5s ease-in-out;
 }
 
-.projectDetailsTerminal {
+/* Toggle button for skills terminal */
+.toggleSkills {
   position: absolute;
-  top: -25px;
-  right: 100px;
-  width: 40%;
-  height: 105% !important;
-  height: calc(100% - 100px);
-  background-color: #000000;
-  border: 2px solid #00ff00;
-  border-radius: 5px;
-  padding: 10px;
-  overflow-y: auto;
-  box-shadow: 0 0 10px #00ff00;
-  animation: slideIn 0.5s ease-in-out;
+  top: 100%;
+  left: 10px;
+  background: transparent;
+  border: 1px solid #0f0;
+  color: #0f0;
+  padding: 6px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  writing-mode: horizontal-tb;
+  text-orientation: mixed;
+  transition: all 0.3s ease;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 5px 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.toggleSkills:hover {
+  background: rgba(0, 255, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.toggleSkills.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Close button for skills terminal */
+.closeSkills {
+  position: absolute;
+  top: -3.4%;
+  right: 25px;
+  background: transparent;
+  border: 1px solid #0f0;
+  color: #0f0;
+  padding: 6px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  writing-mode: horizontal-tb;
+  text-orientation: mixed;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px 5px 0 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.closeSkills:hover {
+  background: rgba(0, 255, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
 }
 
 @keyframes slideIn {
@@ -129,7 +174,6 @@
 .content {
   height: calc(100% - 40px);
   overflow-y: auto;
-  padding: 20px;
   border: 1px solid #0f0;
   border-radius: 5px;
   background-color: rgba(0, 255, 0, 0.05);
@@ -187,4 +231,146 @@
 .tab:hover {
   animation: glitch 1s linear infinite;
   text-shadow: 0 0 10px #0f0;
+}
+
+@media screen and (min-width: 1200px) {
+  .terminal {
+    width: 70vw;
+    height: 75vh;
+  }
+
+  .skillsTerminal, .projectDetailsTerminal {
+    width: 35%;
+    right: 120px;
+  }
+}
+
+/* Medium screens (tablets/smaller laptops, 768px to 1199px) */
+@media screen and (max-width: 1199px) {
+  .terminal {
+    width: 85vw;
+    height: 85vh;
+    padding: 15px;
+  }
+
+  .skillsTerminal, .projectDetailsTerminal {
+    width: 45%;
+    right: 50px;
+  }
+
+  .tab {
+    padding: 4px 12px;
+    font-size: 0.85em;
+  }
+}
+
+/* Small screens (tablets, 768px and down) */
+@media screen and (max-width: 768px) {
+  .terminal {
+    width: 90vw;
+    height: 90vh;
+    padding: 12px;
+  }
+
+  .skillsTerminal, .projectDetailsTerminal {
+    width: 80%;
+    right: 10%;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80% !important;
+  }
+
+  .tabBar {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .tab {
+    padding: 3px 10px;
+    font-size: 0.8em;
+    flex-grow: 1;
+    text-align: center;
+    margin-right: 3px;
+  }
+
+  .content {
+    padding: 15px;
+    height: calc(100% - 60px);
+  }
+}
+
+/* Extra small screens (phones, 480px and down) */
+@media screen and (max-width: 480px) {
+  .terminal {
+    width: 85vw;
+    height: 75vh;
+    padding: 10px;
+  }
+
+  .skillsTerminal, .projectDetailsTerminal {
+    width: 90%;
+    right: 5%;
+    left: 5%;
+    top: 50%;
+    height: 70% !important;
+  }
+
+  .tabBar {
+    margin-bottom: 8px;
+  }
+
+  .closeSkills {
+    top: -5.5%;
+  }
+
+  .tab {
+    padding: 2px 8px;
+    font-size: 0.70em;
+    margin-right: 2px;
+  }
+
+  .content {
+    padding: 10px;
+    height: calc(100% - 40px);
+  }
+}
+
+/* Height-specific adjustments for shorter screens */
+@media screen and (max-height: 600px) {
+  .terminal {
+    height: 95vh;
+  }
+
+  .skillsTerminal, .projectDetailsTerminal {
+    height: 90% !important;
+  }
+
+  .content {
+    height: calc(100% - 35px);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .skillsTerminal {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .skillsTerminal {
+    width: 50%;
+    right: -50%;
+  }
+
+  .closeSkills {
+    top: -6.7%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .skillsTerminal {
+    width: 80%;
+    right: -80%;
+  }
 }

@@ -30,7 +30,7 @@ const Contact: React.FC = () => {
         '> Email:    business.israel.estero@gmail.com',
         '> Github:   https://github.com/iestero42',
         '> LinkedIn: www.linkedin.com/in/israel-estero-agueda',
-        '> LeetCode:  https://leetcode.com/u/0000000000000000000/',
+        '> LeetCode: https://leetcode.com/u/0000000000000000000/',
         '',
       ]
     },

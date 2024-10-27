@@ -1,8 +1,8 @@
 .contact {
-    height: 100%;
+    height: inherit;
     font-family: 'Courier New', monospace;
     color: #0f0;
-    overflow-y: auto;
+    padding: 20px;
   }
   
   .section {

@@ -3,10 +3,13 @@
   font-family: 'Courier New', monospace;
   color: #0f0;
   overflow: hidden;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .terminal {
   width: 100%;
+  margin: 0 auto;
 }
 
 .ascii {
@@ -15,6 +18,8 @@
   margin-bottom: 20px;
   animation: fadeIn 1s ease-in-out;
   white-space: pre;
+  font-size: 14px;
+  line-height: 1.2;
 }
 
 .commandLine {
@@ -22,28 +27,35 @@
   align-items: center;
   margin: 10px 0;
   animation: fadeIn 0.5s ease-in-out;
+  flex-wrap: wrap;
 }
 
 .prompt {
   color: #0f0;
   margin-right: 10px;
   font-weight: bold;
+  font-size: 16px;
 }
 
 .command {
   color: #0ff;
   animation: typing 1s steps(30);
+  font-size: 16px;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .response {
   margin-left: 20px;
   margin-bottom: 20px;
+  font-size: 14px;
 }
 
 .line {
   margin-bottom: 5px;
   animation: fadeIn 0.3s ease-in-out;
   white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .cursor {
@@ -52,8 +64,116 @@
   height: 20px;
   background-color: #0f0;
   animation: blink 0.7s infinite;
+  vertical-align: middle;
 }
 
+/* Custom scrollbar */
+.home::-webkit-scrollbar {
+  width: 8px;
+}
+
+.home::-webkit-scrollbar-track {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.home::-webkit-scrollbar-thumb {
+  background: #0f0;
+  border-radius: 4px;
+}
+
+.home::-webkit-scrollbar-thumb:hover {
+  background: #0f0;
+  box-shadow: 0 0 10px #0f0;
+}
+
+/* Medium screens (tablets/smaller laptops, 992px to 1199px) */
+@media screen and (max-width: 1199px) {
+  .home {
+    padding: 20px;
+  }
+
+  .ascii {
+    font-size: 14px;
+  }
+
+  .response {
+    margin-left: 15px;
+  }
+}
+
+/* Small screens (tablets, 768px to 991px) */
+@media screen and (max-width: 991px) {
+  .home {
+    padding: 15px;
+  }
+
+  .ascii {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .prompt, .command {
+    font-size: 14px;
+  }
+
+  .response {
+    margin-left: 10px;
+    font-size: 13px;
+  }
+
+  .cursor {
+    height: 16px;
+  }
+}
+
+/* Extra small screens (phones, 480px and down) */
+@media screen and (max-width: 480px) {
+  .home {
+    padding: 5px;
+  }
+
+  .ascii {
+    font-size: 0.389rem !important;
+    margin-bottom: 10px;
+    overflow-x: auto;
+  }
+
+  .commandLine {
+    margin: 8px 0;
+  }
+
+  .prompt, .command {
+    font-size: 15px;
+  }
+
+  .response {
+    margin-left: 5px;
+    margin-bottom: 15px;
+    font-size: 13px;
+  }
+
+  .cursor {
+    width: 8px;
+    height: 14px;
+  }
+}
+
+/* Portrait phones and smaller */
+@media screen and (max-width: 320px) {
+  .ascii {
+    font-size: 7px;
+  }
+
+  .prompt, .command {
+    font-size: 11px;
+  }
+
+  .response {
+    font-size: 11px;
+  }
+}
+
+/* Preserve animations */
 @keyframes typing {
   from {
     width: 0;
@@ -81,22 +201,18 @@
   50% { opacity: 1; }
 }
 
+/* Handle ASCII art overflow on small screens */
+@media screen and (max-width: 768px) {
+  .ascii {
+    font-size: 6px;
+  }
 
-/* Custom scrollbar */
-.home::-webkit-scrollbar {
-  width: 8px;
-}
+  .ascii::-webkit-scrollbar {
+    height: 4px;
+  }
 
-.home::-webkit-scrollbar-track {
-  background: rgba(0, 255, 0, 0.1);
-}
-
-.home::-webkit-scrollbar-thumb {
-  background: #0f0;
-  border-radius: 4px;
-}
-
-.home::-webkit-scrollbar-thumb:hover {
-  background: #0f0;
-  box-shadow: 0 0 10px #0f0;
+  .ascii::-webkit-scrollbar-thumb {
+    background: #0f0;
+    border-radius: 2px;
+  }
 }
