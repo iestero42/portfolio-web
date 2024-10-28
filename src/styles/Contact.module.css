@@ -1,111 +1,231 @@
 .contact {
-    height: inherit;
-    font-family: 'Courier New', monospace;
-    color: #0f0;
-    padding: 20px;
+  height: inherit;
+  font-family: 'Courier New', monospace;
+  color: #0f0;
+  padding: 20px;
+  overflow-y: auto;
+  height: inherit;
+  overflow-x: hidden;
+  width: inherit !important;
+}
+
+.section {
+  margin-bottom: 15px;
+  width: inherit;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.commandLine {
+  display: flex;
+  width: inherit;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.prompt {
+  color: #0f0;
+  width: inherit;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.command {
+  color: #0ff;
+  width: inherit;
+  animation: typing 1s steps(30);
+  font-size: 16px;
+  word-break: break-all;
+}
+
+.response {
+  width: inherit;
+  margin-left: 20px;
+  width: 100%;
+}
+
+.line {
+  width: inherit;
+  margin-bottom: 5px;
+  animation: fadeIn 0.3s ease-in-out;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.highlight {
+  width: inherit;
+  color: #0ff;
+  opacity: 0.9;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background-color: #0f0;
+  animation: blink 0.7s infinite;
+}
+
+/* Links styling */
+.line a {
+  color: #0f0;
+  text-decoration: none;
+  border-bottom: 1px solid #0f0;
+  transition: all 0.3s ease;
+  word-break: break-all;
+}
+
+.line a:hover {
+  color: #0ff;
+  border-bottom-color: #0ff;
+  text-shadow: 0 0 5px #0ff;
+}
+
+/* Large screens (desktops, 1200px and up) */
+@media screen and (min-width: 1200px) {
+  .contact {
+      padding: 25px;
   }
-  
-  .section {
-    margin-bottom: 15px;
-    animation: fadeIn 0.5s ease-in-out;
+
+  .command, .prompt {
+      font-size: 18px;
   }
-  
-  .commandLine {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-  }
-  
-  .prompt {
-    color: #0f0;
-    margin-right: 10px;
-    font-weight: bold;
-  }
-  
-  .command {
-    color: #0ff;
-    animation: typing 1s steps(30);
-  }
-  
-  .response {
-    margin-left: 20px;
-  }
-  
+
   .line {
-    margin-bottom: 5px;
-    animation: fadeIn 0.3s ease-in-out;
-    white-space: pre-wrap;
+      font-size: 16px;
   }
-  
-  .highlight {
-    color: #0ff;
-    opacity: 0.9;
+}
+
+/* Medium screens (tablets/smaller laptops, 992px to 1199px) */
+@media screen and (max-width: 1199px) {
+  .contact {
+      padding: 20px;
   }
-  
+
+  .response {
+      margin-left: 15px;
+  }
+}
+
+/* Small screens (tablets, 768px to 991px) */
+@media screen and (max-width: 991px) {
+  .contact {
+      padding: 15px;
+  }
+
+  .command, .prompt {
+      font-size: 14px;
+  }
+
+  .line {
+      font-size: 13px;
+  }
+
+  .response {
+      margin-left: 10px;
+  }
+
   .cursor {
-    display: inline-block;
-    width: 10px;
-    height: 20px;
-    background-color: #0f0;
-    animation: blink 0.7s infinite;
+      height: 16px;
   }
-  
-  /* Links styling */
-  .line a {
-    color: #0f0;
-    text-decoration: none;
-    border-bottom: 1px solid #0f0;
-    transition: all 0.3s ease;
+}
+
+/* Extra small screens (phones, 480px and down) */
+@media screen and (max-width: 480px) {
+  .contact {
+      padding: 2px;;
   }
-  
-  .line a:hover {
-    color: #0ff;
-    border-bottom-color: #0ff;
-    text-shadow: 0 0 5px #0ff;
+
+  .commandLine {
+      margin: 7px 0;
   }
-  
-  @keyframes typing {
-    from {
+
+  .command, .prompt {
+      font-size: 12px;
+  }
+
+  .line {
+      font-size: 9px;
+      margin-bottom: 4px;
+  }
+
+  .response {
+      margin-left: 5px;
+  }
+
+  .cursor {
+      width: 8px;
+      height: 14px;
+  }
+}
+
+/* Portrait phones and smaller */
+@media screen and (max-width: 320px) {
+  .contact {
+      padding: 8px;
+  }
+
+  .command, .prompt {
+      font-size: 11px;
+  }
+
+  .line {
+      font-size: 10px;
+  }
+}
+
+@keyframes typing {
+  from {
       width: 0;
       opacity: 0;
-    }
-    to {
+  }
+  to {
       width: 100%;
       opacity: 1;
-    }
   }
-  
-  @keyframes fadeIn {
-    from {
+}
+
+@keyframes fadeIn {
+  from {
       opacity: 0;
       transform: translateY(5px);
-    }
-    to {
+  }
+  to {
       opacity: 1;
       transform: translateY(0);
-    }
   }
-  
-  @keyframes blink {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
-  }
-  
-  /* Scrollbar styling */
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Scrollbar styling */
+.contact::-webkit-scrollbar {
+  width: 8px;
+}
+
+.contact::-webkit-scrollbar-track {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.contact::-webkit-scrollbar-thumb {
+  background: #0f0;
+  border-radius: 4px;
+}
+
+.contact::-webkit-scrollbar-thumb:hover {
+  background: #0f0;
+  box-shadow: 0 0 10px #0f0;
+}
+
+/* Adjust scrollbar for mobile devices */
+@media screen and (max-width: 768px) {
   .contact::-webkit-scrollbar {
-    width: 8px;
+      width: 4px;
   }
-  
-  .contact::-webkit-scrollbar-track {
-    background: rgba(0, 255, 0, 0.1);
-  }
-  
-  .contact::-webkit-scrollbar-thumb {
-    background: #0f0;
-    border-radius: 4px;
-  }
-  
-  .contact::-webkit-scrollbar-thumb:hover {
-    background: #0f0;
-    box-shadow: 0 0 10px #0f0;
-  }
+}
