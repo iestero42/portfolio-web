@@ -276,8 +276,8 @@
     width: 80%;
     right: 10%;
     left: 10%;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 35%;
+    transform: translateY(0);
     height: 80% !important;
   }
 
@@ -314,6 +314,7 @@
     left: 5%;
     top: 50%;
     height: 70% !important;
+    transform: translateY(0);
   }
 
   .tabBar {
@@ -343,7 +344,9 @@
   }
 
   .skillsTerminal, .projectDetailsTerminal {
+    top: 0%;
     height: 90% !important;
+    transform: translateY(0);
   }
 
   .content {
@@ -358,9 +361,9 @@
 }
 
 @media screen and (max-width: 768px) {
-  .skillsTerminal {
-    width: 50%;
-    right: -50%;
+  .skillsTerminal, .projectDetailsTerminal {
+    top: 0%;
+    transform: translateY(0);
   }
 
   .closeSkills {
@@ -369,8 +372,8 @@
 }
 
 @media screen and (max-width: 480px) {
-  .skillsTerminal {
-    width: 80%;
-    right: -80%;
+  .skillsTerminal, .projectDetailsTerminal {
+    top: 0%;
+    transform: translateY(0);
   }
 }

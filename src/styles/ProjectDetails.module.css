@@ -6,27 +6,33 @@
   color: #0f0;
   position: relative;
   overflow: hidden;
+  max-width: 100%;
 }
 
 .header {
   text-align: center;
   margin: 0;
+  margin-bottom: 10px;
   padding: 0;
   color: #0f0;
-  font-size: 8px;
+  font-size: 5px !important; 
   animation: glow 1s ease-in-out infinite alternate;
+
 }
 
 .content {
   flex-grow: 1;
   overflow-y: auto;
-  padding: 10px 0;
+  padding: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #0f0 rgba(0, 255, 0, 0.1);
 }
 
 .section {
   margin-bottom: 20px;
   opacity: 0;
   animation: fadeIn 0.5s ease-in-out forwards;
+  width: 100%;
 }
 
 .command {
@@ -34,37 +40,41 @@
   margin-bottom: 5px;
   padding: 5px;
   border-left: 2px solid #0f0;
+  word-break: break-word;
+  font-size: 14px;
 }
 
 .output {
   margin-left: 20px;
   padding: 5px;
+  width: calc(100% - 25px);
 }
 
 .title {
   font-size: 1.2em;
   text-shadow: 0 0 5px #0f0;
   margin-bottom: 10px;
+  word-wrap: break-word;
 }
 
 .line {
   margin-bottom: 5px;
   line-height: 1.4;
+  word-wrap: break-word;
+  font-size: 14px;
 }
 
 .bullet {
   color: #0ff;
   margin-right: 10px;
+  display: inline-block;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-}
-
-.visible {
-  opacity: 0;
+  gap: 8px;
+  margin: 10px 0;
 }
 
 .tag {
@@ -73,18 +83,24 @@
   border: 1px solid #0f0;
   margin-right: 5px;
   animation: glowBorder 1s ease-in-out infinite alternate;
+  font-size: 12px;
+  white-space: nowrap;
 }
 
 .links {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  word-break: break-all;
 }
 
 .links a {
   color: #0f0;
   text-decoration: none;
   border-bottom: 1px dashed #0f0;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  display: inline-block;
 }
 
 .links a:hover {
@@ -95,6 +111,7 @@
 .footer {
   padding: 10px;
   text-align: right;
+  margin-top: auto;
 }
 
 .closeButton {
@@ -105,11 +122,168 @@
   cursor: pointer;
   font-family: inherit;
   transition: all 0.3s ease;
+  font-size: 14px;
 }
 
 .closeButton:hover {
   background: rgba(0, 255, 0, 0.1);
   box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+/* Large screens (desktops, 1200px and up) */
+@media screen and (min-width: 1200px) {
+  .command {
+    font-size: 16px;
+  }
+
+  .line {
+    font-size: 16px;
+  }
+
+  .links a {
+    font-size: 16px;
+  }
+
+  .tag {
+    font-size: 14px;
+  }
+
+  .closeButton {
+    font-size: 16px;
+  }
+}
+
+/* Medium screens (tablets/smaller laptops, 992px to 1199px) */
+@media screen and (max-width: 1199px) {
+  .content {
+    padding: 8px;
+  }
+
+  .output {
+    margin-left: 15px;
+  }
+}
+
+/* Small screens (tablets, 768px to 991px) */
+@media screen and (max-width: 991px) {
+  .header {
+    font-size: 7px;
+  }
+
+  .command {
+    font-size: 13px;
+    padding: 4px;
+  }
+
+  .line {
+    font-size: 13px;
+  }
+
+  .links a {
+    font-size: 13px;
+  }
+
+  .tag {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+
+  .output {
+    margin-left: 12px;
+  }
+}
+
+/* Extra small screens (phones, 480px and down) */
+@media screen and (max-width: 480px) {
+  .header {
+    font-size: 6px;
+  }
+
+  .content {
+    padding: 6px;
+  }
+
+  .command {
+    font-size: 12px;
+    padding: 3px;
+    border-left-width: 1px;
+  }
+
+  .line {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  .links a {
+    font-size: 12px;
+  }
+
+  .tag {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+
+  .output {
+    margin-left: 8px;
+  }
+
+  .bullet {
+    margin-right: 6px;
+  }
+
+  .closeButton {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+/* Very small screens (320px and down) */
+@media screen and (max-width: 320px) {
+  .header {
+    font-size: 5px;
+  }
+
+  .command {
+    font-size: 11px;
+  }
+
+  .line {
+    font-size: 11px;
+  }
+
+  .links a {
+    font-size: 11px;
+  }
+
+  .tag {
+    font-size: 9px;
+  }
+}
+
+/* Scrollbar styling */
+.content::-webkit-scrollbar {
+  width: 7px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #0f0;
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: #0f0;
+  box-shadow: 0 0 10px #0f0;
+}
+
+/* Adjust scrollbar for mobile devices */
+@media screen and (max-width: 768px) {
+  .content::-webkit-scrollbar {
+    width: 4px;
+  }
 }
 
 @keyframes fadeIn {
@@ -139,23 +313,4 @@
   to {
     box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
   }
-}
-
-/* Scrollbar styling */
-.content::-webkit-scrollbar {
-  width: 7px;
-}
-
-.content::-webkit-scrollbar-track {
-  background: rgba(0, 255, 0, 0.1);
-}
-
-.content::-webkit-scrollbar-thumb {
-  background: #0f0;
-  border-radius: 4px;
-}
-
-.content::-webkit-scrollbar-thumb:hover {
-  background: #0f0;
-  box-shadow: 0 0 10px #0f0;
 }
