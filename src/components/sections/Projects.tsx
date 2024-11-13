@@ -29,6 +29,13 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
       shortDesc: 'A trading bot for the stock market',
       tags: ['Python', 'APIs', 'Finance']
     },
+
+    {
+      id: 'project3',
+      name: 'VETTA',
+      shortDesc: 'A mobile app for climbers by climbers',
+      tags: ['Flutter', 'Dart', 'Typescript']
+    },
   ];
 
   useEffect(() => {
