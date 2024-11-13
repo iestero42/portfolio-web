@@ -55,6 +55,30 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ projectId, onClose }) =
         'Users: 1,200+'
       ]
     },
+    project3: {
+      name: 'Vetta',
+      description: [
+        'A mobile app for climbers to save and share',
+        'their own boulders and routes from their',
+        'favorite climbing gyms, as well as discover',
+        'new ones created by other climbers.',
+        '',
+        'Key Features:',
+        '- User authentication',
+        '- Image and video uploads',
+        '- Geolocation and mapping',
+        '- Social sharing and comments',
+        '- Climbing grades and difficulty filters',
+      ],
+      technologies: ['Flutter', 'AppWrite', 'TypeScript'],
+      github: '',
+      live: '',
+      metrics: [
+        'Test Coverage: 94%',
+        'Performance Score: 98',
+        'Users: 1,200+'
+      ]
+    },
   };
 
   const project = projectDetails[projectId as keyof typeof projectDetails];
@@ -115,7 +139,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ projectId, onClose }) =
             <div className={styles.command}>$ cat links.txt</div>
             <div className={styles.output}>
               <div className={styles.links}>
-                <div>
+                <div className={project.live.length == 1 ? '' : styles.visible}>
                   <span className={styles.bullet}> &gt;</span>
                   Repository: <a href={project.github} target="_blank" rel="noopener noreferrer">{project.github}</a>
                 </div>
